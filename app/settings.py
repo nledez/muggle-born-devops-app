@@ -30,8 +30,19 @@ SECRET_KEY = 'django-insecure-tv8^y7nqc=n*9-0i#nr4z=oe$&))gq5c=6s4q3y5_6aj4p3@9p
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+# Allowed Hosts Definition
+ALLOWED_HOSTS = [
+    'demo-systemd.hashicorp4noobs.fr',
+    'demo-docker.hashicorp4noobs.fr',
+    'localhost',
+    '127.0.0.1',
+]
+CSRF_TRUSTED_ORIGINS = [
+    'https://demo-systemd.hashicorp4noobs.fr',
+    'https://demo-docker.hashicorp4noobs.fr',
+    'http://localhost',
+    'http://127.0.0.1',
+]
 
 # Application definition
 
@@ -42,11 +53,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -125,8 +138,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
