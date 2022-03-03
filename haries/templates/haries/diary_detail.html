@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Details diary : {{ diary.title }}{% endblock %}
+
+{% block content %}
+<h1>Diary: {{ diary.title }}</h1>
+
+
+{{ diary.text }}
+{% endblock %}

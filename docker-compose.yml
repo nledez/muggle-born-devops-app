@@ -1,0 +1,26 @@
+---
+version: "3.9"
+
+volumes:
+  haries-db-data:
+    driver: local
+
+services:
+
+  db:
+    image: postgres:10
+    restart: always
+    environment:
+      POSTGRES_DB: haries
+      POSTGRES_USER: haries
+      POSTGRES_PASSWORD: haries35
+    volumes:
+      - haries-db-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 18080:8080
